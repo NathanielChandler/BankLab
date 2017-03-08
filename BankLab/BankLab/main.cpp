@@ -9,6 +9,7 @@ void DisplayMenu();
 void Transact();
 void AddAccountMenu();
 void DisplayAccountMenu();
+void DisplayLog();
 
 int main()
 {
@@ -27,7 +28,8 @@ void DisplayMenu()
 		cout << "Welcome to " + bank.getName() << endl;
 		cout << "1) Add Account\n"
 			<< "2) Transact\n"
-			<< "3) Display Accounts\n";
+			<< "3) Display Accounts\n"
+			<< "4) Display Account Log\n";
 		cout << "What would you like to do? " << endl;
 
 		cin >> choice;
@@ -42,7 +44,10 @@ void DisplayMenu()
 			break;
 		case 3:
 			DisplayAccountMenu();
-			defalut: break;
+			break;
+		case 4:
+			DisplayLog();
+		default: break;
 		}
 	} while (choice != 9);
 
@@ -52,17 +57,19 @@ void Transact()
 {
 	system("cls");
 	cout << "Which Account?" << endl;
-	cout << bank.ListAccounts << endl;
+	cout << bank.ListAccounts() << endl;
 
 	int chosenAccount;
 	cin >> chosenAccount;
 
 	system("cls");
-	cout << "1) Deposit\n2)Withdraw" << endl;
+	cout << "1) Deposit\n"
+		<< "2) Withdraw" << endl;
 
 	int transactionType;
 	cin >> transactionType;
 
+	system("cls");
 	cout << "How Much? (in pennies)" << endl;
 	int pennies;
 	cin >> pennies;
@@ -106,4 +113,19 @@ void DisplayAccountMenu()
 	cout << bank.ShowAccounts();
 	char filler;
 	cin >> filler;
+}
+
+void DisplayLog()
+{
+	system("cls");
+	cout << "Which Account?" << endl;
+	cout << bank.ListAccounts() << endl;
+
+	int chosenAccount;
+	cin >> chosenAccount;
+
+	system("cls");
+	cout << bank.ViewLog(chosenAccount) << endl;
+	char filler;
+	cin >> filler; 
 }

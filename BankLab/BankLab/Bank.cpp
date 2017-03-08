@@ -26,7 +26,9 @@ string Bank::ShowAccounts()
 	string output = "Accounts for " + _name + "\n";
 	for (auto account : _account)
 	{
-		output += to_string(account.getAccountNumber()) + "\n";
+		//### - Last, first: balance
+		output += to_string(account.getAccountNumber()) + " - " + account.getAccountName() + ": " 
+			+ account.getBalanceString() + "\n";
 	}
 	return output;
 }
@@ -45,9 +47,9 @@ string Bank::ListAccounts()
 
 void Bank::Deposit(int accountNumber, int amount)
 {
-	for (auto account : _account) 
+	for (auto &account : _account) 
 	{
-		if (account.getAccountNumber = accountNumber)
+		if (account.getAccountNumber() == accountNumber)
 		{
 			account.Deposit(amount);
 			return;
@@ -57,12 +59,23 @@ void Bank::Deposit(int accountNumber, int amount)
 
 void Bank::Withdraw(int accountNumber, int amount)
 {
-	for (auto account : _account)
+	for (auto &account : _account)
 	{
-		if (account.getAccountNumber = accountNumber)
+		if (account.getAccountNumber() == accountNumber)
 		{
 			account.Withdraw(amount);
 			return;
+		}
+	}
+}
+
+string Bank::ViewLog(int accountNumber)
+{
+	for (auto &account : _account)
+	{
+		if (account.getAccountNumber() == accountNumber)
+		{
+			return account.getLog();
 		}
 	}
 }

@@ -18,5 +18,6 @@ public:
 	string ListAccounts();
 	void Deposit(int accountNumber, int amount);
 	void Withdraw(int accountNumber, int amount);
+	string ViewLog(int accountNumber);
 };
 
