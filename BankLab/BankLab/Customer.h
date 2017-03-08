@@ -1,13 +1,15 @@
 #pragma once
 #include <string>
+using namespace std;
+
 class Customer
 {
 private:
-	std::string _firstName;
-	std::string _lastName;
+	string _firstName;
+	string _lastName;
 public:
-	Customer(std::string, std::string);
+	Customer(string, string);
 	~Customer();
-	std::string getFullName();
+	string getFullName();
 };
 

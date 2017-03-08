@@ -12,5 +12,6 @@ public:
 	void Deposit(int);
 	void Withdraw(int);
 	int getBalance(int);
+	int getAccountNumber();
 };
 
